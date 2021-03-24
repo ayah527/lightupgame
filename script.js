@@ -109,6 +109,22 @@ function guess(btn){
   if(!gamePlaying){
     return;
   }
+  if (pattern[guessCounter] == btn) { // Is guess correct
+    if (progress == guessCounter) { // Is turn over
+      if (progress == pattern.length - 1) { // Is this the last turn
+        winGame();
+      } else {
+        progress ++; 
+        playClueSequence;
+      }
+    } else { // Check next guess.
+      guessCounter ++;
+    }
+    
+  } else { 
+    // Guessed wrong — end game. 
+    loseGame();
+  }
 
-  // add game logic here
+  
 }
