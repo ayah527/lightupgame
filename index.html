@@ -20,18 +20,20 @@
       Welcome to the game! Repeat the pattern by pressing buttons.
     </p>
     <button 
+            onclick="startGame()"
             id="startBtn">Start
     </button>
     <button 
             class="hidden"
+            onclick="stopGame()"
             id="stopBtn">Stop
     </button>
     
     <div id = "gameButtonArea">
-      <button id="button1"></button>
-      <button id="button2"></button>
-      <button id="button3"></button>
-      <button id="button4"></button>
+      <button id="button1" onmousedown="startTone(1)" onmouseup="stopTone()" onclick="guess(1)"></button>
+      <button id="button2" onmousedown="startTone(2)" onmouseup="stopTone()" onclick="guess(2)"></button>
+      <button id="button3" onmousedown="startTone(3)" onmouseup="stopTone()" onclick="guess(3)"></button>
+      <button id="button4" onmousedown="startTone(4)" onmouseup="stopTone()" onclick="guess(4)"></button>
     </div>
     
   </body>
