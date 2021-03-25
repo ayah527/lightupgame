@@ -11,12 +11,21 @@ var tonePlaying = false;
 var volume = 0.5;  //must be between 0.0 and 1.0
 var guessCounter = 0;
 var mistakes = 0; 
-var time;
+var bomb = number();
 
 function genRandomPattern() { 
   for (let i = 0; i < 10; i ++) {
-    pattern.push(Math.floor(Math.random() * 5 + 1));
+    var curr = number();
+    if (bomb != curr) {
+      pattern.push(curr);
+    } else {
+      i = i - 1;
+    }
   }
+}
+
+function number() {
+  return Math.floor(Math.random() * 5 + 1);
 }
 
 function startGame(){
@@ -121,6 +130,9 @@ function guess(btn){
   console.log("user guessed: " + btn);
   if(!gamePlaying){
     return;
+  }
+  if (btn == bomb) { // if clicked on bomb
+    loseGame();
   }
   if (pattern[guessCounter] == btn) { // Is guess correct
     if (progress == guessCounter) { // Is turn over
