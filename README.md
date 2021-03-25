@@ -7,6 +7,7 @@ Submitted by: Ayah Abushama
 Time spent: 3 hours spent in total
 
 Link to project: https://glitch.com/edit/#!/mammoth-heavy-expansion
+Link to game: https://mammoth-heavy-expansion.glitch.me/
 
 ## Required Functionality
 
@@ -35,6 +36,9 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 * [x] A "bomb" button that is generated randomly each game, not a part of the pattern array. If clicked, the game ends immediately.
 * [x] An option in which the user can click a button to generate a hint, but that is only allowed 5 times. Then, they will need to wait for the clue sequence to carry out.
+* [x] A notification when the guess is incorrect. 
+* [x] An interval that notifies the user when 10 seconds have passed without selecting a hint as the timer goes. 
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
