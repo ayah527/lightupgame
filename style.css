@@ -33,7 +33,7 @@ button {
 }
 
 #button1:active, #button1.lit {
-    background: url("https://cdn.glitch.com/8cca7ac7-c6cb-4c44-abc3-a8f55e817148%2Fgreen.jpeg?v=1616641150701");
+    background: green;
 }
 
 #button2 {
@@ -57,7 +57,7 @@ button {
 }
 
 #button4:active, #button4.lit {
-    background:yellow;
+    background: url(https://cdn.glitch.com/8cca7ac7-c6cb-4c44-abc3-a8f55e817148%2Fyellow.jpeg?v=1616641149926);
 }
 
 #button5 {
