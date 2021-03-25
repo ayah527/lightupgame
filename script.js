@@ -48,6 +48,8 @@ function stopGame(){
     gamePlaying = false;
     pattern = [];
     endTimer();
+    time = 5000; 
+    hints = 5;
     // swap the Start and Stop buttons
     document.getElementById("startBtn").classList.remove("hidden");
     document.getElementById("stopBtn").classList.add("hidden");
@@ -167,8 +169,11 @@ function guess(btn){
   } else { 
     // Guessed wrong — add to the strikes, or lose.
     mistakes ++; 
+    
     if (mistakes == 3) { 
       loseGame();
+    } else {
+      alert("That guess was incorrect.");
     }
   }    
 }
