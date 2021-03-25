@@ -33,7 +33,7 @@ button {
 }
 
 #button1:active, #button1.lit {
-    background: green;
+    background: "assets/green.jpeg";
 }
 
 #button2 {
