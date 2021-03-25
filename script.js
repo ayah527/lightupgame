@@ -11,7 +11,7 @@ var tonePlaying = false;
 var volume = 0.5;  //must be between 0.0 and 1.0
 var guessCounter = 0;
 var mistakes = 0; 
-var time = setInterval(myTimer, 50);
+var time;
 
 function genRandomPattern() { 
   for (let i = 0; i < 10; i ++) {
@@ -103,7 +103,7 @@ function playClueSequence(){
     setTimeout(playSingleClue,delay,pattern[i]) // set a timeout to play that clue
     delay += clueHoldTime 
     delay += cluePauseTime;
-    clueHoldTime -= 5;
+    clueHoldTime -= 100;
   }
 }
 
@@ -119,7 +119,6 @@ function winGame(){
 
 function guess(btn){
   console.log("user guessed: " + btn);
-  
   if(!gamePlaying){
     return;
   }
@@ -141,15 +140,5 @@ function guess(btn){
     if (mistakes == 3) { 
       loseGame();
     }
-  }
-  
-  function startTimer() {
-    time = setInterval(alertFunc, 5000);
-  }  
-  
-  function alertFunc() {
-    alert("You have: " + time + " seconds remaining")
-  }
-  
-  
+  }    
 }
