@@ -14,7 +14,6 @@ var mistakes = 0;
 var bomb = number();
 var time = 50000;
 var timer;
-var hints = 5;
 
 function genRandomPattern() { 
   for (let i = 0; i < 10; i ++) {
@@ -48,11 +47,11 @@ function stopGame(){
     gamePlaying = false;
     pattern = [];
     endTimer();
-    time = 5000; 
-    hints = 5;
+    time = 50000; 
     // swap the Start and Stop buttons
     document.getElementById("startBtn").classList.remove("hidden");
     document.getElementById("stopBtn").classList.add("hidden");
+    return;
 }
 
 // Sound Synthesis Functions
@@ -63,6 +62,7 @@ const freqMap = {
   4: 466.2,
   5: 522.7
 }
+
 function playTone(btn,len){ 
   o.frequency.value = freqMap[btn]
   g.gain.setTargetAtTime(volume,context.currentTime + 0.05,0.025)
@@ -102,14 +102,6 @@ function clearButton(btn){
   document.getElementById("button"+btn).classList.remove("lit")
 }
 
-function hint() { 
-  if (hints == 0) {
-    alert("You have no more remaining hints.");
-    return;
-  }
-  hints -= 1;
-  playSingleClue(pattern[guessCounter]);
-}
 
 function playSingleClue(btn){
   if(gamePlaying){
@@ -135,32 +127,37 @@ function playClueSequence(){
 function loseGame(){
   stopGame();
   alert("Game Over. You lost.");
+  return;
 }
 
 function winGame(){
   stopGame();
   alert("Congratulations! You have won the game. WOOO");
+  return;
 }
 
 function guess(btn){
   console.log("user guessed: " + btn);
   endTimer();
+  
+  if (btn == bomb) { // if clicked on bomb
+    loseGame();
+  }
+  
   if (time >= 2000) {
     time -= 2000;
   }
   if(!gamePlaying){
     return;
   }
-  if (btn == bomb) { // if clicked on bomb
-    loseGame();
-  }
+
   if (pattern[guessCounter] == btn) { // Is guess correct
     if (progress == guessCounter) { // Is turn over
       if (progress == pattern.length - 1) { // Is this the last turn
         winGame();
       } else {
         progress ++; 
-        playClueSequence;
+        playClueSequence();
       }
     } else { // Check next guess.
       guessCounter ++;
