@@ -38,6 +38,7 @@ function startGame(){
     // swap the Start and Stop buttons
     document.getElementById("startBtn").classList.add("hidden");
     document.getElementById("stopBtn").classList.remove("hidden");
+    startTimer();
     genRandomPattern();
     playClueSequence();
 }
@@ -114,7 +115,6 @@ function playSingleClue(btn){
 
 function playClueSequence(){
   guessCounter = 0;
-  startTimer();
   let delay = nextClueWaitTime; //set delay to initial wait time
   for(let i=0;i<=progress;i++){ // for each clue that is revealed so far
     console.log("play single clue: " + pattern[i] + " in " + delay + "ms")
@@ -140,6 +140,10 @@ function guess(btn){
   console.log("user guessed: " + btn);
   endTimer();
   
+  if(!gamePlaying){
+    return;
+  }
+  
   if (btn == bomb) { // if clicked on bomb
     loseGame();
   }
@@ -147,11 +151,8 @@ function guess(btn){
   if (time >= 2000) {
     time -= 2000;
   }
-  if(!gamePlaying){
-    return;
-  }
-
-  if (pattern[guessCounter] == btn) { // Is guess correct
+  
+  if (pattern[progress] == btn) { // Is guess correct
     if (progress == guessCounter) { // Is turn over
       if (progress == pattern.length - 1) { // Is this the last turn
         winGame();
@@ -169,13 +170,18 @@ function guess(btn){
     
     if (mistakes == 3) { 
       loseGame();
-    } else {
+    } else if (gamePlaying) {
       alert("That guess was incorrect.");
     }
-  }    
+  }
+  startTimer();
 }
 
 function startTimer() {
+  if (!gamePlaying) {
+    return;
+  }
+  
   alert("You have " + time/1000 + " seconds to make your next guess");
   setTimeout(loseGame, time);
   if (time >= 10000) {
