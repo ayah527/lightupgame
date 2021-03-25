@@ -36,22 +36,20 @@ The following **optional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-![](your-link-here)
+!https://cdn.glitch.com/8cca7ac7-c6cb-4c44-abc3-a8f55e817148%2Fezgif.com-gif-maker.gif?v=1616646113770
 
 
 ## Reflection Questions
 1. If you used any outside resources to help complete your submission (websites, books, people, etc) list them here. 
-[YOUR ANSWER HERE]
+N/A, given resources sufficed.
 
 2. What was a challenge you encountered in creating this submission (be specific)? How did you overcome it? (recommended 200 - 400 words) 
-[YOUR ANSWER HERE]
-
+My biggest challenge was working with the images, something I was not yet familiar with since most of my coding experience is back end.
 3. What questions about web development do you have after completing your submission? (recommended 100 - 300 words) 
 [YOUR ANSWER HERE]
 
 4. If you had a few more hours to work on this project, what would you spend them doing (for example: refactoring certain functions, adding additional features, etc). Be specific. (recommended 100 - 300 words) 
-[YOUR ANSWER HERE]
-
+I would firstly implement the timer function, and add complexities to the buttons (ie, one of them is a bomb that will end the game if clicked.) I would also change the way the hints work — maybe make it so that the game can only accept 3 hints, and the user clicks on a button to get a hint. I would also make a challenge mode, one where the colors switch or the location of the buttons switch, adding a complexity for the user. 
 
 
 ## License
