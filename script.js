@@ -10,11 +10,11 @@ var gamePlaying = false;
 var tonePlaying = false;
 var volume = 0.5;  //must be between 0.0 and 1.0
 var guessCounter = 0;
+var mistakes = 0; 
 
 function genRandomPattern() { 
   for (let i = 0; i < 10; i ++) {
-    pattern.push(Math.floor(Math.random() * 6 + 1));
-    alert(pattern);
+    pattern.push(Math.floor(Math.random() * 5 + 1));
   }
 }
 
@@ -22,6 +22,7 @@ function startGame(){
     //initialize game variables
     progress = 0;
     gamePlaying = true;
+    mistakes = 0;
     // swap the Start and Stop buttons
     document.getElementById("startBtn").classList.add("hidden");
     document.getElementById("stopBtn").classList.remove("hidden");
@@ -32,6 +33,7 @@ function startGame(){
 function stopGame(){
     //end game
     gamePlaying = false;
+    pattern = [];
     // swap the Start and Stop buttons
     document.getElementById("startBtn").classList.remove("hidden");
     document.getElementById("stopBtn").classList.add("hidden");
@@ -132,8 +134,11 @@ function guess(btn){
     }
     
   } else { 
-    // Guessed wrong — end game. 
-    loseGame();
+    // Guessed wrong — add to the strikes, or lose.
+    mistakes ++; 
+    if (mistakes == 3) { 
+      loseGame();
+    }
   }
 
   
