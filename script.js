@@ -140,6 +140,5 @@ function guess(btn){
       loseGame();
     }
   }
-
   
 }
