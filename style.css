@@ -33,7 +33,7 @@ button {
 }
 
 #button1:active, #button1.lit {
-    background: "assets/green.jpeg";
+    background: url("https://cdn.glitch.com/8cca7ac7-c6cb-4c44-abc3-a8f55e817148%2Fgreen.jpeg?v=1616641150701");
 }
 
 #button2 {
