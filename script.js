@@ -11,6 +11,7 @@ var tonePlaying = false;
 var volume = 0.5;  //must be between 0.0 and 1.0
 var guessCounter = 0;
 var mistakes = 0; 
+var time = setInterval(myTimer, 50);
 
 function genRandomPattern() { 
   for (let i = 0; i < 10; i ++) {
@@ -118,6 +119,7 @@ function winGame(){
 
 function guess(btn){
   console.log("user guessed: " + btn);
+  
   if(!gamePlaying){
     return;
   }
@@ -140,5 +142,14 @@ function guess(btn){
       loseGame();
     }
   }
+  
+  function startTimer() {
+    time = setInterval(alertFunc, 5000);
+  }  
+  
+  function alertFunc() {
+    alert("You have: " + time + " seconds remaining")
+  }
+  
   
 }
