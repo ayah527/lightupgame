@@ -59,3 +59,11 @@ button {
 #button4:active, #button4.lit {
     background:yellow;
 }
+
+#button5 {
+    background: lavender;
+}
+
+#button5:active, #button4.lit {
+    background: orchid;
+}
