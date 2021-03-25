@@ -11,12 +11,24 @@ var tonePlaying = false;
 var volume = 0.5;  //must be between 0.0 and 1.0
 var guessCounter = 0;
 var mistakes = 0; 
-var time;
+var bomb = number();
+var time = 50000;
+var timer;
+var hints = 5;
 
 function genRandomPattern() { 
   for (let i = 0; i < 10; i ++) {
-    pattern.push(Math.floor(Math.random() * 5 + 1));
+    var curr = number();
+    if (bomb != curr) {
+      pattern.push(curr);
+    } else {
+      i = i - 1;
+    }
   }
+}
+
+function number() {
+  return Math.floor(Math.random() * 5 + 1);
 }
 
 function startGame(){
@@ -35,6 +47,7 @@ function stopGame(){
     //end game
     gamePlaying = false;
     pattern = [];
+    endTimer();
     // swap the Start and Stop buttons
     document.getElementById("startBtn").classList.remove("hidden");
     document.getElementById("stopBtn").classList.add("hidden");
@@ -87,23 +100,33 @@ function clearButton(btn){
   document.getElementById("button"+btn).classList.remove("lit")
 }
 
+function hint() { 
+  if (hints == 0) {
+    alert("You have no more remaining hints.");
+    return;
+  }
+  hints -= 1;
+  playSingleClue(pattern[guessCounter]);
+}
+
 function playSingleClue(btn){
   if(gamePlaying){
     lightButton(btn);
     playTone(btn,clueHoldTime);
     setTimeout(clearButton,clueHoldTime,btn);
+    clueHoldTime -= 100;
   }
 }
 
 function playClueSequence(){
   guessCounter = 0;
+  startTimer();
   let delay = nextClueWaitTime; //set delay to initial wait time
   for(let i=0;i<=progress;i++){ // for each clue that is revealed so far
     console.log("play single clue: " + pattern[i] + " in " + delay + "ms")
     setTimeout(playSingleClue,delay,pattern[i]) // set a timeout to play that clue
     delay += clueHoldTime 
     delay += cluePauseTime;
-    clueHoldTime -= 100;
   }
 }
 
@@ -119,8 +142,15 @@ function winGame(){
 
 function guess(btn){
   console.log("user guessed: " + btn);
+  endTimer();
+  if (time >= 2000) {
+    time -= 2000;
+  }
   if(!gamePlaying){
     return;
+  }
+  if (btn == bomb) { // if clicked on bomb
+    loseGame();
   }
   if (pattern[guessCounter] == btn) { // Is guess correct
     if (progress == guessCounter) { // Is turn over
@@ -141,4 +171,16 @@ function guess(btn){
       loseGame();
     }
   }    
+}
+
+function startTimer() {
+  alert("You have " + time/1000 + " seconds to make your next guess");
+  setTimeout(loseGame, time);
+  if (time >= 10000) {
+    timer = setInterval(function(){ alert("Ten seconds have passed."); }, 10000);
+  }
+}
+
+function endTimer() {
+  clearInterval(timer);
 }

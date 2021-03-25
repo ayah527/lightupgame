@@ -30,9 +30,11 @@ The following **optional** features are implemented:
 * [x] Player only loses after 3 mistakes (instead of on the first mistake)
 * [x] Game button appearance change goes beyond color (e.g. add an image)
 * [ ] Game button sound is more complex than a single tone (e.g. an audio file, a chord, a sequence of multiple tones)
-* [ ] User has a limited amount of time to enter their guess on each turn
+* [x] User has a limited amount of time to enter their guess on each turn
 
-
+The following **additional** features are implemented:
+* [x] A "bomb" button that is generated randomly each game, not a part of the pattern array. If clicked, the game ends immediately.
+* [x] An option in which the user can click a button to generate a hint, but that is only allowed 5 times. Then, they will need to wait for the clue sequence to carry out.
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
@@ -41,16 +43,19 @@ Here's a walkthrough of implemented user stories:
 
 ## Reflection Questions
 1. If you used any outside resources to help complete your submission (websites, books, people, etc) list them here. 
+
 N/A, given resources sufficed.
 
 2. What was a challenge you encountered in creating this submission (be specific)? How did you overcome it? (recommended 200 - 400 words) 
-My biggest challenge was working with the images, something I was not yet familiar with since most of my coding experience is back end.
+
+My biggest challenge was working with the images, something I was not yet familiar with since most of my coding experience is back end. I mainly relied on the resources given in the specifications of the pre-work, reading them in depth. There was also a lot of trial and error involved.
 3. What questions about web development do you have after completing your submission? (recommended 100 - 300 words) 
-[YOUR ANSWER HERE]
+
+My biggest question is how this deep on the backend, and how the complability between the HTML imports and CSS files work. I think most of my 
 
 4. If you had a few more hours to work on this project, what would you spend them doing (for example: refactoring certain functions, adding additional features, etc). Be specific. (recommended 100 - 300 words) 
-I would firstly implement the timer function, and add complexities to the buttons (ie, one of them is a bomb that will end the game if clicked.) I would also change the way the hints work — maybe make it so that the game can only accept 3 hints, and the user clicks on a button to get a hint. I would also make a challenge mode, one where the colors switch or the location of the buttons switch, adding a complexity for the user. 
 
+I would firstly add complexities to the buttons, such as having them move around. I would also implement a challenge mode, where only certain factors need to be considered (ie, size or location) and the other factors can change. There could also be another mode in which the pattern sequence is based on a word, then the user would need to guess the sequence based on the word.
 
 ## License
 
